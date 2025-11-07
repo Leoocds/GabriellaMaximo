@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriella Máximo - Salão de Beleza Premium</title>
+  <meta name="description"
+    content="Experiência premium em cuidados de beleza. Um momento exclusivo dedicado a você, com elegância e sofisticação." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+    });
+  </script>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span>✨</span>
+              <span>Beleza Premium</span>
+            </div>
+
+            <h1 class="hero-title">
+              Sua Beleza,<br />
+              <span class="hero-title-gradient">Nossa Paixão</span>
+            </h1>
+
+            <p class="hero-description">
+              Experiência premium em cuidados de beleza. Um momento exclusivo
+              dedicado a você, com elegância e sofisticação.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#agendamento" class="btn btn-primary">Agendar Horário</a>
+              <a href="#servicos" class="btn btn-secondary">Nossos Serviços</a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <div class="hero-image-glow"></div>
+            <img src="/public/images/GabriellaMaximo.jpg" alt="Salão de beleza elegante" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nossos Serviços</h2>
+          <p>
+            Descubra nossa seleção premium de tratamentos de beleza,
+            cuidadosamente elaborados para realçar sua elegância natural.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">✂️</div>
+            <h3>Cabelo</h3>
+            <p>
+              Cortes, colorações, tratamentos e penteados exclusivos para
+              realçar sua beleza natural.
+            </p>
+            <ul>
+              <li>• Corte e Escova</li>
+              <li>• Coloração Premium</li>
+              <li>• Hidratação Profunda</li>
+              <li>• Tratamentos Capilares</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">💅</div>
+            <h3>Unha</h3>
+            <p>
+              Manicure e pedicure impecáveis, com técnicas modernas e produtos
+              de alta qualidade.
+            </p>
+            <ul>
+              <li>• Manicure Completa</li>
+              <li>• Pedicure SPA</li>
+              <li>• Unhas em Gel</li>
+              <li>• Nail Art Personalizada</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">👁️</div>
+            <h3>Cílios</h3>
+            <p>
+              Design de sobrancelhas e extensão de cílios para um olhar marcante
+              e expressivo.
+            </p>
+            <ul>
+              <li>• Volume Brasileiro</li>
+              <li>• Volume Egípcio</li>
+              <li>• Volume Glamour </li>
+              <li>• Volume Luxo</li>
+              <li>• Volume Russo</li>
+              <li>• Fox Eyes</li>
+              <li>• Manutenção</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="agendamento" class="booking">
+      <div class="container">
+        <div class="booking-wrapper">
+          <div class="section-header">
+            <h2>Agende sua experiência</h2>
+            <p>
+              Reserve seu horário e desfrute de um momento exclusivo de cuidado
+              e beleza.
+            </p>
+          </div>
+
+          <% if (success) { %>
+            <div class="success-message">
+              ✓ Agendamento realizado com sucesso! Entraremos em contato em breve.
+            </div>
+            <% } %>
+              <% if (typeof error !=='undefined' ) { %>
+                <div class="error-message">✗ <%= error %>
+                </div>
+                <% } %>
+
+                  <form class="booking-form">
+                    <div class="form-group icon-input">
+                      <label for="nome"><i data-lucide="user"></i>
+                        Nome Completo</label>
+                      <input type="text" id="nome" name="nome" required />
+                    </div>
+
+                    <div class="form-group icon-input">
+                      <label for="celular"><i data-lucide="phone"></i>Telefone</label>
+                      <input type="tel" id="celular" name="celular" placeholder="(11) 99999-9999" required />
+                    </div>
+
+                    <div class="form-group icon-input">
+                      <label for="tipo_servico"><i data-lucide="scissors"></i>Tipo de Serviço</label>
+                      <select id="tipo_servico" name="tipo_servico" required>
+                        <option value="">Selecione...</option>
+                        <option value="cabelo">Cabelo</option>
+                        <option value="unha">Unha</option>
+                        <option value="cilios">Cílios</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group icon-input">
+                      <label for="servico"><i data-lucide="star"></i>Serviço Específico</label>
+                      <select id="servico" name="servico" required>
+                        <option value="">Primeiro selecione o tipo</option>
+                      </select>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group icon-input">
+                        <label for="data"><i data-lucide="calendar"></i>Data</label>
+                        <input type="date" id="data" name="data" required />
+                      </div>
+
+                      <div class="form-group icon-input">
+                        <label for="hora"><i data-lucide="clock"></i>Horário</label>
+                        <input type="time" id="hora" name="hora" required />
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                      Confirmar Agendamento
+                    </button>
+                  </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+      <div class="container">
+        <div class="contact-wrapper">
+          <h2>Visite-nos</h2>
+          <p>
+            Estamos localizados no coração de São Paulo, prontos para recebê-la
+            em um ambiente elegante e acolhedor.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-item">
+              <h3>Telefone</h3>
+              <p>(11) 99999-9999</p>
+            </div>
+
+            <div class="contact-item">
+              <h3>Email</h3>
+              <p>contato@gabriellamaximo.com</p>
+            </div>
+
+            <div class="contact-item">
+              <h3>Endereço</h3>
+              <p>São Paulo, SP</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        const servicos = <%- JSON.stringify(servicos) %>;
+
+        document.getElementById('tipo_servico').addEventListener('change', function () {
+          const tipo = this.value;
+          const selectServico = document.getElementById('servico');
+
+          selectServico.innerHTML = '<option value="">Selecione...</option>';
+
+          if (tipo && servicos[tipo]) {
+            servicos[tipo].forEach((s) => {
+              const option = document.createElement('option');
+              option.value = s;
+              option.textContent = s;
+              selectServico.appendChild(option);
+            });
+          }
+        });
+
+        const select = document.getElementById("hora");
+        for (let hour = 9; hour <= 20; hour++) {
+          for (let min of ["00", "30"]) {
+            const time = `${String(hour).padStart(2, "0")}:${min}`;
+            const option = document.createElement("option");
+            option.value = time;
+            option.textContent = time;
+            select.appendChild(option);
+          }
+        }
+
+        const dateInput = document.getElementById("data");
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.min = today;
+
+        document.getElementById('celular').addEventListener('input', function (e) {
+          let value = e.target.value.replace(/\D/g, '');
+          if (value.length > 11) value = value.slice(0, 11);
+
+          if (value.length > 6) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+          } else if (value.length > 2) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+          } else if (value.length > 0) {
+            value = `(${value}`;
+          }
+
+          e.target.value = value;
+        });
+
+        document.querySelector("form").addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const form = e.target;
+          const data = new FormData(form);
+          const obj = Object.fromEntries(data.entries());
+
+          const response = await fetch("/agendar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj),
+          });
+
+          const result = await response.json();
+          if (result.success) {
+            Swal.fire("Sucesso!", result.message, "success");
+          } else {
+            Swal.fire("Erro!", result.message, "error");
+          }
+
+          if (result.success) form.reset();
+
+          lucide.createIcons();
+        });
+      </script>
+</body>
+
+</html>
