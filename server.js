@@ -12,10 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 const db = mysql.createConnection({
+  const db = mysql.createConnection({
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: true
+  }
 });
 
 db.connect((err) => {
